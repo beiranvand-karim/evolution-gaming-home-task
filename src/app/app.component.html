@@ -1,2 +1,13 @@
 
 
+
+<form action="" [formGroup]="form" (ngSubmit)="sendMsg()">
+
+  <input type="text" formControlName="messageControl">
+
+  <button type="submit">Send Message</button>
+
+</form>
+
+
+<p>{{msg}}</p>

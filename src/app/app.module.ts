@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
+import {WebSocketService} from './services/web-socket.service';
+import {ChatService} from './services/chat.service';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -15,10 +18,12 @@ import {HttpModule} from '@angular/http';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [
-
+    WebSocketService,
+    ChatService
   ],
   bootstrap: [AppComponent]
 })

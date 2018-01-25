@@ -92,8 +92,6 @@ export class AppComponent implements OnInit {
       'id': id
     };
 
-    this.chatService.removeTable(id);
-
     this.chatService.messages.next(remove);
   }
 

@@ -84,11 +84,11 @@ export class ChatService {
 
           case 'removal_failed':
 
-            const i = this.removedTablesSubject.getValue().findIndex(tables => tables.id === data.id);
-
-            if (i !== -1 ) {
-              this.tables.getValue().push(this.removedTablesSubject.getValue().splice(i, 1)[0]);
-            }
+            // const i = this.removedTablesSubject.getValue().findIndex(tables => tables.id === data.id);
+            //
+            // if (i !== -1 ) {
+            //   this.tables.getValue().push(this.removedTablesSubject.getValue().splice(i, 1)[0]);
+            // }
 
             break;
 
@@ -111,7 +111,6 @@ export class ChatService {
 
     this.removedTablesSubject.next(this.tables.getValue().splice(index, 1));
     this.tables.next(this.tables.getValue());
-
 
   }
 

@@ -9,8 +9,6 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 })
 export class AppComponent {
 
-
-
   form: FormGroup;
 
   messageControl = new FormControl();
@@ -23,11 +21,7 @@ export class AppComponent {
     private formBuilder: FormBuilder
   ) {
     chatService.messages.subscribe(msg => {
-      console.log('Response from websocket: ' + msg.author);
-      console.log('Response from websocket: ' + msg.message);
-
-      this.msg = msg.message;
-
+      this.msg = msg;
     });
 
 
@@ -36,22 +30,8 @@ export class AppComponent {
     });
   }
 
-
-
-
   sendMsg() {
-
-
-    const message = {
-        author: 'karim',
-        message: this.form.controls.messageControl.value
-    };
-
-    console.log('new message from client to websocket: ', message);
-
-
-    this.chatService.messages.next(message);
-    message.message = '';
+    this.chatService.messages.next(this.form.controls.messageControl.value);
   }
 
 

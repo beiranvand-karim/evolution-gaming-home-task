@@ -1,16 +1,26 @@
 
 
 
-<form action="" [formGroup]="form" (ngSubmit)="subscribe()">
+<button (click)="subscribe()">login and subscribe</button>
 
-  <!--<input type="text" formControlName="order">-->
+<button (click)="unsubscribe()">Unsubscribe</button>
 
-  <button type="submit">login and subscribe</button>
+
+<br>
+<br>
+<br>
+
+
+<form action="" [formGroup]="form" (ngSubmit)="addTable()">
+
+  <input type="text" placeholder="after_id" formControlName="after_id">
+  <input type="text" placeholder="name" formControlName="name">
+  <input type="text" placeholder="participants" formControlName="participants">
+
+  <button type="submit">add table</button>
 
 </form>
 
-
-<button (click)="unsubscribe()">Unsubscribe</button>
 
 
 <p>{{msg}}</p>
@@ -29,6 +39,23 @@
         <span>participants: {{table.participants}}</span>
         <span>id: {{table.id}}</span>
         <button (click)="delete(table.id)">delete</button>
+
+
+        <form action="" [formGroup]="edit_Form" (ngSubmit)="editTable(table.id)">
+
+          <div>
+            <input type="text" placeholder="name" formControlName="edit_name">
+          </div>
+          <div>
+            <input type="text" placeholder="participants" formControlName="edit_participants">
+          </div>
+          <div>
+            <button type="submit">edit</button>
+          </div>
+
+
+        </form>
+
 
       </div>
 

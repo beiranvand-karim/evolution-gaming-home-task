@@ -1,13 +1,42 @@
 
 
 
-<form action="" [formGroup]="form" (ngSubmit)="sendMsg()">
+<form action="" [formGroup]="form" (ngSubmit)="subscribe()">
 
-  <input type="text" formControlName="messageControl">
+  <!--<input type="text" formControlName="order">-->
 
-  <button type="submit">Send Message</button>
+  <button type="submit">login and subscribe</button>
 
 </form>
 
 
-<p>{{ msg}}</p>
+<button (click)="unsubscribe()">Unsubscribe</button>
+
+
+<p>{{msg}}</p>
+
+<ul>
+
+  <ng-template ngFor let-table [ngForOf]="chatService.tables$ | async" let-s="index">
+
+
+    <li>
+
+
+      <div>
+
+        <span>name: {{table.name}}</span>
+        <span>participants: {{table.participants}}</span>
+        <span>id: {{table.id}}</span>
+        <button (click)="delete(table.id)">delete</button>
+
+      </div>
+
+
+    </li>
+
+  </ng-template>
+
+</ul>
+
+

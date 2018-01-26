@@ -26,6 +26,9 @@ export class AppComponent implements OnInit {
       'id': id
     };
 
+    this.chatService.addToRemovalCandidates(id);
+    this.chatService.removeFromTableList(id);
+
     this.chatService.messages.next(remove);
   }
 

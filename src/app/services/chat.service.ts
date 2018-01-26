@@ -3,6 +3,7 @@ import {WebSocketService} from './web-socket.service';
 import {Subject} from 'rxjs/Subject';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Table} from '../classes/table';
+import {DeleteCandidateTable} from '../classes/delete-candidate-table';
 
 const URL = 'wss://js-assignment.evolutiongaming.com/ws_api';
 
@@ -18,8 +19,7 @@ export class ChatService {
   private tables = new BehaviorSubject<Table[]>([]);
   public tables$ = this.tables.asObservable();
 
-  private removedTablesSubject = new BehaviorSubject<Table[]>(null);
-
+  private removalCandidatesSubject = new BehaviorSubject<DeleteCandidateTable[]>([]);
 
   public messages: Subject<any>;
 
@@ -50,8 +50,7 @@ export class ChatService {
             break;
 
           case ChatService.TABLE_REMOVED:
-
-            this.tableRemoved(data.id);
+            this.removeFromRemovalCandidates(data.id);
             break;
 
           case ChatService.TABLE_UPDATED:
@@ -61,12 +60,7 @@ export class ChatService {
 
           case ChatService.REMOVAL_FAILED:
 
-            // const i = this.removedTablesSubject.getValue().findIndex(tables => tables.id === data.id);
-            //
-            // if (i !== -1 ) {
-            //   this.tables.getValue().push(this.removedTablesSubject.getValue().splice(i, 1)[0]);
-            // }
-
+            this.removalFailed(data.id);
             break;
 
           default:
@@ -99,13 +93,9 @@ export class ChatService {
 
   }
 
-  tableRemoved(id: number) {
-
+  removeFromTableList(id: number) {
     const index = this.tables.getValue().findIndex(tables => tables.id === id);
-
-    if (index !== -1 ) {
-      this.tables.getValue().splice(index, 1);
-    }
+    this.tables.getValue().splice(index, 1);
 
   }
 
@@ -120,14 +110,32 @@ export class ChatService {
 
   }
 
+  addToRemovalCandidates(id: number) {
 
-  removeTable(id: number) {
 
-    const index = this.tables.getValue().findIndex(tables => tables.id === id);
+    const t = this.tables.getValue().find(tables => tables.id === id);
+    const i = this.tables.getValue().findIndex(tables => tables.id === id);
 
-    this.removedTablesSubject.next(this.tables.getValue().splice(index, 1));
-    this.tables.next(this.tables.getValue());
+    const removalCandidate = new DeleteCandidateTable();
+    removalCandidate.id = id;
+    removalCandidate.position = i;
+    removalCandidate.table = t;
+
+
+    this.removalCandidatesSubject.getValue().push(removalCandidate);
 
   }
 
+  removeFromRemovalCandidates(id: number) {
+    const i = this.removalCandidatesSubject.getValue().findIndex(tables => tables.id === id);
+    this.removalCandidatesSubject.getValue().splice(i, 1);
+  }
+
+  removalFailed(id: number) {
+
+    const table = this.removalCandidatesSubject.getValue().find(tables => tables.id === id);
+    this.tables.getValue()[table.position] = table.table;
+
+
+  }
 }

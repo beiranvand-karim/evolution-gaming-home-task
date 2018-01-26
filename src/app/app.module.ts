@@ -10,13 +10,19 @@ import {ChatService} from './services/chat.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
 import { AddComponent } from './add/add.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { ListComponent } from './list/list.component';
+import { DropDownComponent } from './drop-down/drop-down.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UpdateComponent,
-    AddComponent
+    AddComponent,
+    LogInComponent,
+    ListComponent,
+    DropDownComponent
   ],
   imports: [
     BrowserModule,

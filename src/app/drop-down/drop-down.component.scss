@@ -1,0 +1,78 @@
+
+
+
+
+div.user-drop-down-menu {
+
+  min-width: 250px;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+  padding: 25px;
+  background-color: #fff;
+  top:calc(100% + 15px);
+  position: absolute;
+  z-index: 100;
+
+  &:before {
+
+    content: "";
+    height: 0;
+    position: absolute;
+    top:-20px;
+    right: 20px;
+    border: 10px solid transparent;
+    border-bottom-color: #fff;
+
+  }
+
+  > ul {
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 12px;
+    line-height: 25px;
+
+    > li.user-list {
+
+      > a {
+
+        outline: none;
+        border: none;
+        background: none;
+        text-decoration: none;
+        color: #6A6A6A;
+        display: block;
+        transition: color 0.15s ease;
+
+        &:hover {
+          color: #F53948;
+        }
+
+
+        > i {
+
+          margin-left: 10px;
+          font-size: 1.25rem;
+          color: #3C3C3C;
+          vertical-align: middle;
+          background-position: 0 0;
+
+        }
+      }
+
+      &.user-account {
+
+
+      }
+
+      &.user-exit {
+
+        border-top: 1px solid #e3e4e5;
+        padding-top: 5px;
+        margin-top: 5px;
+
+
+      }
+    }
+  }
+}

@@ -1,46 +1,5 @@
 
 
-
-<button (click)="subscribe()">login and subscribe</button>
-
-<button (click)="unsubscribe()">Unsubscribe</button>
-
-
-<br>
-<br>
-<br>
-
-<max-add></max-add>
-
-
-
-<ul>
-
-  <ng-template ngFor let-table [ngForOf]="chatService.tables$ | async" let-s="index">
-
-
-    <li>
-
-
-      <div>
-
-        <span>name: {{table.name}}</span>
-        <span>participants: {{table.participants}}</span>
-        <span>id: {{table.id}}</span>
-        <button (click)="delete(table.id)">delete</button>
-
-
-        <max-update [id]="table.id"></max-update>
-
-
-
-      </div>
-
-
-    </li>
-
-  </ng-template>
-
-</ul>
+<router-outlet></router-outlet>
 
 

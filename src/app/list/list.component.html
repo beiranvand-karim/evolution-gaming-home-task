@@ -1,0 +1,77 @@
+
+
+
+
+<div class="container">
+
+
+  <div>
+
+
+
+    <div class="top">
+
+      <!--<button (click)="subscribe()">subscribe</button>-->
+      <!--<button (click)="unsubscribe()">Unsubscribe</button>-->
+
+      <div>
+
+        <div class="left">
+          <!--<i class="fa fa-chevron-down"></i>-->
+          <span>subscribed ...</span>
+
+        </div>
+
+        <div class="right">
+          <i class="fa fa-chevron-down"></i>
+
+          <max-drop-down></max-drop-down>
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <!--<max-add></max-add>-->
+
+    </div>
+
+
+    <ul>
+
+      <ng-template ngFor let-table [ngForOf]="chatService.tables$ | async" let-s="index">
+
+
+        <li>
+
+
+          <div>
+
+            <span>name: {{table.name}}</span>
+            <span>participants: {{table.participants}}</span>
+            <span>id: {{table.id}}</span>
+            <button (click)="delete(table.id)">delete</button>
+
+
+            <max-update [id]="table.id"></max-update>
+
+
+
+          </div>
+
+
+        </li>
+
+      </ng-template>
+
+    </ul>
+
+
+  </div>
+
+
+</div>
+

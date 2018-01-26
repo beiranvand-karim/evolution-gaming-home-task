@@ -4,6 +4,7 @@ import {Subject} from 'rxjs/Subject';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Table} from '../classes/table';
 import {DeleteCandidateTable} from '../classes/delete-candidate-table';
+import {Router} from '@angular/router';
 
 const URL = 'wss://js-assignment.evolutiongaming.com/ws_api';
 
@@ -15,6 +16,7 @@ export class ChatService {
   public static TABLE_REMOVED = 'table_removed';
   public static TABLE_UPDATED = 'table_updated';
   public static REMOVAL_FAILED = 'removal_failed';
+  public static LOGIN_SUCCESSFUL = 'login_successful';
 
   private tables = new BehaviorSubject<Table[]>([]);
   public tables$ = this.tables.asObservable();
@@ -23,7 +25,10 @@ export class ChatService {
 
   public messages: Subject<any>;
 
-  constructor(wsService: WebSocketService) {
+  constructor(
+    wsService: WebSocketService,
+    router: Router
+  ) {
 
     this.messages = <Subject<any>> wsService
       .connect(URL)
@@ -61,6 +66,11 @@ export class ChatService {
           case ChatService.REMOVAL_FAILED:
 
             this.removalFailed(data.id);
+            break;
+
+          case ChatService.LOGIN_SUCCESSFUL:
+
+            router.navigate(['/list']).then(null);
             break;
 
           default:

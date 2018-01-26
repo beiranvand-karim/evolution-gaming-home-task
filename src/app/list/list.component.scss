@@ -1,0 +1,101 @@
+
+
+
+div.container {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+
+
+  > div {
+
+
+    > div.top {
+
+      display: flex;
+      justify-content: center;
+
+      > div {
+        width: 500px;
+        display: flex;
+        justify-content: center;
+        padding-top: 25px;
+        padding-bottom: 25px;
+
+
+
+
+        > div.left {
+          width: 50%;
+        }
+
+        > div.right {
+          width: 50%;
+          display: flex;
+          justify-content: flex-end;
+          position: relative;
+
+          > max-drop-down {
+            position: absolute;
+          }
+
+          > i {
+            cursor: pointer;
+          }
+
+        }
+
+
+      }
+
+
+
+
+    }
+
+
+    > ul {
+
+
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+
+      > li {
+
+        display: flex;
+        justify-content: center;
+
+        > div {
+
+          margin-bottom: 10px;
+          border: 2px solid #888;
+          border-radius: 5px;
+          background-color: #eee;
+          padding: 25px;
+
+          width: 500px;
+
+
+          > span {
+            display: block;
+            margin-bottom: 5px;
+          }
+
+        }
+
+      }
+
+
+    }
+
+
+  }
+
+
+}

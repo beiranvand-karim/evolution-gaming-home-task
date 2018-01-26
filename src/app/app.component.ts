@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ChatService} from './services/chat.service';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'max-root',
@@ -10,14 +9,10 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 export class AppComponent implements OnInit {
 
 
-
-  msg: string;
-
   constructor(
-    public chatService: ChatService,
-    private formBuilder: FormBuilder
+    public chatService: ChatService
   ) {
-
+    chatService.messages.subscribe();
   }
 
   ngOnInit(): void {
@@ -25,8 +20,6 @@ export class AppComponent implements OnInit {
   }
 
   delete(id: number) {
-
-    console.log(id);
 
     const remove = {
       '$type': 'remove_table',

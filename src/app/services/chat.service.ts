@@ -40,55 +40,23 @@ export class ChatService {
 
           case ChatService.TABLE_LIST:
 
-            this.tables.next(data.tables);
-
-            this.tableList();
-
+            this.tableList(data.tables);
             break;
 
 
           case ChatService.TABLE_ADDED:
 
-
-            const newTable = data.table;
-
-            if (data.after_id === -1) {
-              this.tables.getValue()[0] = newTable;
-            } else {
-
-              const k = this.tables.getValue().findIndex(tables => tables.id === data.after_id);
-              this.tables.getValue()[k + 1] = newTable;
-            }
-
-            this.tableAdded();
-
+            this.tableAdded(data.table, data.after_id);
             break;
 
           case ChatService.TABLE_REMOVED:
 
-            const index = this.tables.getValue().findIndex(tables => tables.id === data.id);
-
-            if (index !== -1 ) {
-              this.tables.getValue().splice(index, 1);
-              this.tables.next(this.tables.getValue());
-            }
-
-            this.tableRemoved();
-
+            this.tableRemoved(data.id);
             break;
 
           case ChatService.TABLE_UPDATED:
 
-
-            const table = this.tables.getValue().find(tables => tables.id === data.table.id);
-            const s = this.tables.getValue().findIndex(tables => tables.id === data.table.id);
-
-            table.name = data.table.name;
-            table.participants = data.table.participants;
-            this.tables.getValue()[s] = table;
-
-            this.tableUpdate();
-
+            this.tableUpdate(data.table);
             break;
 
           case ChatService.REMOVAL_FAILED:
@@ -113,19 +81,42 @@ export class ChatService {
 
   }
 
-  tableList() {
+  tableList(tables: Table[]) {
+
+    this.tables.next(tables);
 
   }
 
-  tableAdded() {
+  tableAdded(table: Table, afterId: number) {
+
+    if (afterId === -1) {
+      this.tables.getValue()[0] = table;
+    } else {
+
+      const k = this.tables.getValue().findIndex(tables => tables.id === afterId);
+      this.tables.getValue()[k + 1] = table;
+    }
 
   }
 
-  tableRemoved() {
+  tableRemoved(id: number) {
+
+    const index = this.tables.getValue().findIndex(tables => tables.id === id);
+
+    if (index !== -1 ) {
+      this.tables.getValue().splice(index, 1);
+    }
 
   }
 
-  tableUpdate() {
+  tableUpdate(table: Table) {
+
+    const t = this.tables.getValue().find(tables => tables.id === table.id);
+    const s = this.tables.getValue().findIndex(tables => tables.id === table.id);
+
+    t.name = table.name;
+    t.participants = table.participants;
+    this.tables.getValue()[s] = table;
 
   }
 

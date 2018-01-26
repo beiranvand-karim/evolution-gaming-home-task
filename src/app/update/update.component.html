@@ -1,0 +1,17 @@
+
+
+
+<form action="" [formGroup]="edit_Form" (ngSubmit)="editTable(id)">
+
+  <div>
+    <input type="text" placeholder="name" formControlName="edit_name">
+  </div>
+  <div>
+    <input type="text" placeholder="participants" formControlName="edit_participants">
+  </div>
+  <div>
+    <button type="submit">edit</button>
+  </div>
+
+
+</form>

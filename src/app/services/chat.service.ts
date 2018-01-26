@@ -6,11 +6,14 @@ import {Table} from '../classes/table';
 
 const URL = 'wss://js-assignment.evolutiongaming.com/ws_api';
 
-
-
 @Injectable()
 export class ChatService {
 
+  public static TABLE_LIST = 'table_list';
+  public static TABLE_ADDED = 'table_added';
+  public static TABLE_REMOVED = 'table_removed';
+  public static TABLE_UPDATED = 'table_updated';
+  public static REMOVAL_FAILED = 'removal_failed';
 
   private tables = new BehaviorSubject<Table[]>([]);
   public tables$ = this.tables.asObservable();
@@ -35,14 +38,16 @@ export class ChatService {
         switch (data.$type) {
 
 
-          case 'table_list':
+          case ChatService.TABLE_LIST:
 
             this.tables.next(data.tables);
+
+            this.tableList();
 
             break;
 
 
-          case 'table_added':
+          case ChatService.TABLE_ADDED:
 
 
             const newTable = data.table;
@@ -55,10 +60,11 @@ export class ChatService {
               this.tables.getValue()[k + 1] = newTable;
             }
 
+            this.tableAdded();
 
             break;
 
-          case 'table_removed':
+          case ChatService.TABLE_REMOVED:
 
             const index = this.tables.getValue().findIndex(tables => tables.id === data.id);
 
@@ -67,9 +73,11 @@ export class ChatService {
               this.tables.next(this.tables.getValue());
             }
 
+            this.tableRemoved();
+
             break;
 
-          case 'table_updated':
+          case ChatService.TABLE_UPDATED:
 
 
             const table = this.tables.getValue().find(tables => tables.id === data.table.id);
@@ -79,10 +87,11 @@ export class ChatService {
             table.participants = data.table.participants;
             this.tables.getValue()[s] = table;
 
+            this.tableUpdate();
 
             break;
 
-          case 'removal_failed':
+          case ChatService.REMOVAL_FAILED:
 
             // const i = this.removedTablesSubject.getValue().findIndex(tables => tables.id === data.id);
             //
@@ -101,6 +110,22 @@ export class ChatService {
 
           return data.$type;
       });
+
+  }
+
+  tableList() {
+
+  }
+
+  tableAdded() {
+
+  }
+
+  tableRemoved() {
+
+  }
+
+  tableUpdate() {
 
   }
 

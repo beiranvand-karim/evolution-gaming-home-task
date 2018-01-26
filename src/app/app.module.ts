@@ -8,11 +8,15 @@ import {HttpModule} from '@angular/http';
 import {WebSocketService} from './services/web-socket.service';
 import {ChatService} from './services/chat.service';
 import {ReactiveFormsModule} from '@angular/forms';
+import { UpdateComponent } from './update/update.component';
+import { AddComponent } from './add/add.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UpdateComponent,
+    AddComponent
   ],
   imports: [
     BrowserModule,

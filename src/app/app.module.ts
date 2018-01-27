@@ -11,9 +11,10 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
 import { AddComponent } from './add/add.component';
 import { LogInComponent } from './log-in/log-in.component';
-import { ListComponent } from './list/list.component';
-import { DropDownComponent } from './drop-down/drop-down.component';
 import {UserInterfaceService} from './services/user-interface.service';
+import { TablesListComponent } from './tables-list/tables-list.component';
+import { TableItemComponent } from './table-item/table-item.component';
+import { ContainerComponent } from './container/container.component';
 
 
 @NgModule({
@@ -22,8 +23,9 @@ import {UserInterfaceService} from './services/user-interface.service';
     UpdateComponent,
     AddComponent,
     LogInComponent,
-    ListComponent,
-    DropDownComponent
+    TablesListComponent,
+    TableItemComponent,
+    ContainerComponent
   ],
   imports: [
     BrowserModule,

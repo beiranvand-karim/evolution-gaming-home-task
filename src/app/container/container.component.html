@@ -1,0 +1,43 @@
+
+
+
+
+<div class="container">
+
+
+  <div>
+
+    <div class="top">
+
+      <div>
+
+        <div class="left">
+          <span>subscribed ...</span>
+
+        </div>
+
+        <div class="right">
+          <button class="btn btn-default" (click)="unsubscribe()">unsubscribe</button>
+          <button class="btn btn-default" (click)="toggleSlide()">add table</button>
+          <button class="btn-danger">log out</button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="add-table-container" [@slide]="change()">
+      <max-add></max-add>
+    </div>
+
+
+    <max-tables-list [tables]="chatService.tables$ | async"></max-tables-list>
+
+
+  </div>
+
+
+</div>
+

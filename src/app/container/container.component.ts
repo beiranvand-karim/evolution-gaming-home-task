@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {ChatService} from '../services/chat.service';
-import {animate, state, style, transition, trigger} from '@angular/animations';
 import {UserInterfaceService} from '../services/user-interface.service';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
-  selector: 'max-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+  selector: 'max-container',
+  templateUrl: './container.component.html',
+  styleUrls: ['./container.component.scss'],
   animations: [
     trigger('slide', [
       state('in', style({
@@ -23,7 +23,7 @@ import {UserInterfaceService} from '../services/user-interface.service';
     ])
   ]
 })
-export class ListComponent implements OnInit {
+export class ContainerComponent implements OnInit {
 
   slide = false;
 
@@ -36,9 +36,9 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.userInterfaceService.slide$.subscribe(data => {
-        this.slide = data;
+      this.slide = data;
 
-      });
+    });
   }
 
   toggleSlide() {
@@ -47,30 +47,6 @@ export class ListComponent implements OnInit {
 
   change() {
     return this.slide === true ? 'in' : 'out';
-  }
-
-  delete(id: number) {
-
-    const remove = {
-      '$type': 'remove_table',
-      'id': id
-    };
-
-    this.chatService.addToRemovalCandidates(id);
-    this.chatService.removeFromTableList(id);
-
-    this.chatService.messages.next(remove);
-  }
-
-
-  subscribe() {
-
-    const order = {
-      '$type': 'subscribe_tables'
-    };
-
-
-    this.chatService.messages.next(order);
   }
 
   unsubscribe() {
@@ -82,5 +58,4 @@ export class ListComponent implements OnInit {
     this.chatService.messages.next(order);
 
   }
-
 }

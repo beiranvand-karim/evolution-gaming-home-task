@@ -1,0 +1,22 @@
+
+
+<li>
+
+
+  <div>
+
+    <span>name: {{table.name}}</span>
+    <span>participants: {{table.participants}}</span>
+    <span>id: {{table.id}}</span>
+    <button class="btn btn-danger" (click)="delete(table.id)">delete</button>
+    <button class="btn btn-default">edit</button>
+
+
+    <max-update [id]="table.id"></max-update>
+
+
+
+  </div>
+
+
+</li>

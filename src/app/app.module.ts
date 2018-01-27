@@ -13,6 +13,7 @@ import { AddComponent } from './add/add.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { ListComponent } from './list/list.component';
 import { DropDownComponent } from './drop-down/drop-down.component';
+import {UserInterfaceService} from './services/user-interface.service';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { DropDownComponent } from './drop-down/drop-down.component';
   ],
   providers: [
     WebSocketService,
-    ChatService
+    ChatService,
+    UserInterfaceService
   ],
   bootstrap: [AppComponent]
 })

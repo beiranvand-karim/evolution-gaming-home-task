@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ChatService} from '../services/chat.service';
+import {UserInterfaceService} from '../services/user-interface.service';
 
 @Component({
   selector: 'max-add',
@@ -21,7 +22,8 @@ export class AddComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    public chatService: ChatService
+    public chatService: ChatService,
+    public userInterfaceService: UserInterfaceService
   ) {
     this.form = this.formBuilder.group({
       after_id: this.after_id,
@@ -33,6 +35,10 @@ export class AddComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  close() {
+    this.userInterfaceService.slideOut();
+  }
 
   addTable() {
 

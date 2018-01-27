@@ -9,8 +9,19 @@ export class UserInterfaceService {
   public dropDown$ = this.dropDownSubject.asObservable();
 
 
+  private slideSubject = new BehaviorSubject<boolean>(false);
+  public slide$ = this.slideSubject.asObservable();
+
+
   constructor() { }
 
+  slideIn() {
+    this.slideSubject.next(true);
+  }
+
+  slideOut() {
+    this.slideSubject.next(false);
+  }
 
   showDropDown() {
     this.dropDownSubject.next(true);

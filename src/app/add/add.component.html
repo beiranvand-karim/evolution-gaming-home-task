@@ -4,10 +4,15 @@
 
 <form action="" [formGroup]="form" (ngSubmit)="addTable()">
 
-  <input type="text" placeholder="after_id" formControlName="after_id">
-  <input type="text" placeholder="name" formControlName="name">
-  <input type="text" placeholder="participants" formControlName="participants">
+  <input type="text" class="form-control" placeholder="after_id" formControlName="after_id">
+  <input type="text" class="form-control" placeholder="name" formControlName="name">
+  <input type="text" class="form-control" placeholder="participants" formControlName="participants">
 
-  <button type="submit">add table</button>
+
+  <div>
+    <button class="btn btn-danger" (click)="close()">cancel</button>
+    <button type="submit" class="btn">add table</button>
+  </div>
+
 
 </form>

@@ -7,36 +7,29 @@
 
   <div>
 
-
-
     <div class="top">
-
-      <!--<button (click)="subscribe()">subscribe</button>-->
-      <!--<button (click)="unsubscribe()">Unsubscribe</button>-->
 
       <div>
 
         <div class="left">
-          <!--<i class="fa fa-chevron-down"></i>-->
           <span>subscribed ...</span>
 
         </div>
 
         <div class="right">
-          <i class="fa fa-chevron-down"></i>
+          <button class="btn btn-default">unsubscribe</button>
+          <button class="btn btn-default" (click)="toggleSlide()">add table</button>
+          <button class="btn-danger">log out</button>
 
-          <max-drop-down></max-drop-down>
         </div>
-
-
-
-
 
       </div>
 
+    </div>
 
-      <!--<max-add></max-add>-->
 
+    <div class="add-table-container" [@slide]="change()">
+      <max-add></max-add>
     </div>
 
 
@@ -53,7 +46,8 @@
             <span>name: {{table.name}}</span>
             <span>participants: {{table.participants}}</span>
             <span>id: {{table.id}}</span>
-            <button (click)="delete(table.id)">delete</button>
+            <button class="btn btn-danger" (click)="delete(table.id)">delete</button>
+            <button class="btn btn-default">edit</button>
 
 
             <max-update [id]="table.id"></max-update>

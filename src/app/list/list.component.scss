@@ -28,18 +28,21 @@ div.container {
 
 
         > div.left {
-          width: 50%;
+          width: 30%;
         }
 
         > div.right {
-          width: 50%;
+          width: 70%;
           display: flex;
           justify-content: flex-end;
           position: relative;
 
-          > max-drop-down {
-            position: absolute;
+          > button {
+
+            margin-left: 10px;
+
           }
+
 
           > i {
             cursor: pointer;
@@ -52,6 +55,21 @@ div.container {
 
 
 
+
+    }
+
+
+    > div.add-table-container {
+
+      display: flex;
+      justify-content: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+
+      > max-add {
+        width: 300px;
+      }
 
     }
 

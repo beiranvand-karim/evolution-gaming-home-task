@@ -1,7 +1,7 @@
 
 
 
-<form action="" [formGroup]="edit_Form" (ngSubmit)="editTable(id)">
+<form action="" [formGroup]="edit_Form" (ngSubmit)="editTable()">
 
   <div>
     <input type="text" class="form-control" placeholder="name" formControlName="edit_name">
@@ -10,8 +10,8 @@
     <input type="text" class="form-control" placeholder="participants" formControlName="edit_participants">
   </div>
   <div>
-    <button class="btn btn-danger">cancel</button>
     <button class="btn btn-default" type="submit">submit</button>
+    <button class="btn btn-danger" (click)="close()">cancel</button>
   </div>
 
 

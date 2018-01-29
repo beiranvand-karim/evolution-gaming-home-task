@@ -13,7 +13,35 @@ export class UserInterfaceService {
   public slide$ = this.slideSubject.asObservable();
 
 
+  private updateSlideSubject = new BehaviorSubject<boolean>(false);
+  public updateSlide$ = this.updateSlideSubject.asObservable();
+
+  private updateIdSubject = new BehaviorSubject<number>(null);
+  public updateId$ = this.updateIdSubject.asObservable();
+
   constructor() { }
+
+  toggleSlideUpdate() {
+    this.updateSlideSubject.next(!this.updateSlideSubject.getValue());
+  }
+
+
+  setUpdateId(value: number) {
+    this.updateIdSubject.next(value);
+  }
+
+  getUpdateId() {
+    return this.updateIdSubject.getValue();
+  }
+
+  slideUpdateIn() {
+    this.updateSlideSubject.next(true);
+    this.updateSlideSubject.next(true);
+  }
+
+  slideUpdateOut() {
+    this.updateSlideSubject.next(false);
+  }
 
   slideIn() {
     this.slideSubject.next(true);

@@ -37,21 +37,10 @@ export class TableItemComponent implements OnInit {
     this.userInterfaceService.updateSlide$.subscribe(data => {
       this.visible = data;
     });
-
-    // this.userInterfaceService.updateId$.skip(1).subscribe(id => {
-    //
-    //   if (id === this.table.id) {
-    //
-    //
-    //
-    //   }
-    // });
-
   }
 
-  showUpdate(id: number) {
-    this.userInterfaceService.setUpdateId(id);
-    this.userInterfaceService.toggleSlideUpdate();
+  showUpdate() {
+    this.visible = !this.visible;
   }
 
 

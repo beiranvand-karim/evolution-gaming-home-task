@@ -5,9 +5,6 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 export class UserInterfaceService {
 
 
-  private dropDownSubject = new BehaviorSubject<boolean>(false);
-  public dropDown$ = this.dropDownSubject.asObservable();
-
 
   private slideSubject = new BehaviorSubject<boolean>(false);
   public slide$ = this.slideSubject.asObservable();
@@ -16,8 +13,7 @@ export class UserInterfaceService {
   private updateSlideSubject = new BehaviorSubject<boolean>(false);
   public updateSlide$ = this.updateSlideSubject.asObservable();
 
-  private updateIdSubject = new BehaviorSubject<number>(null);
-  public updateId$ = this.updateIdSubject.asObservable();
+
 
   constructor() { }
 
@@ -25,14 +21,6 @@ export class UserInterfaceService {
     this.updateSlideSubject.next(!this.updateSlideSubject.getValue());
   }
 
-
-  setUpdateId(value: number) {
-    this.updateIdSubject.next(value);
-  }
-
-  getUpdateId() {
-    return this.updateIdSubject.getValue();
-  }
 
   slideUpdateIn() {
     this.updateSlideSubject.next(true);
@@ -49,14 +37,6 @@ export class UserInterfaceService {
 
   slideOut() {
     this.slideSubject.next(false);
-  }
-
-  showDropDown() {
-    this.dropDownSubject.next(true);
-  }
-
-  hideDropDown() {
-    this.dropDownSubject.next(false);
   }
 
 }

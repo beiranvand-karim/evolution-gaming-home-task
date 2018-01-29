@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ChatService} from '../services/chat.service';
 import {UserInterfaceService} from '../services/user-interface.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'max-container',
@@ -29,7 +30,8 @@ export class ContainerComponent implements OnInit {
 
   constructor(
     public chatService: ChatService,
-    public userInterfaceService: UserInterfaceService
+    public userInterfaceService: UserInterfaceService,
+    private router: Router
   ) {
     chatService.messages.subscribe();
   }
@@ -39,6 +41,17 @@ export class ContainerComponent implements OnInit {
       this.slide = data;
 
     });
+  }
+
+  logOut() {
+
+    const login = {
+      '$type': 'logout'
+    };
+
+    this.chatService.messages.next(login);
+    this.router.navigate(['/']).then(null);
+
   }
 
   toggleSlide() {

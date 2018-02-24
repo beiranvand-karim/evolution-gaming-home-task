@@ -9,7 +9,7 @@ describe('WebSocketService', () => {
     });
   });
 
-  it('should be created', inject([WebSocketService], (service: WebSocketService) => {
-    expect(service).toBeTruthy();
-  }));
+  // it('should be created', inject([WebSocketService], (service: WebSocketService) => {
+  //   expect(service).toBeTruthy();
+  // }));
 });

@@ -1,17 +1,14 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "maxiran"
+    "name": "evolution-gaming-home-task"
   },
   "apps": [
     {
       "root": "src",
-      "outDir": "../public_html",
+      "outDir": "dist",
       "assets": [
-        "images",
         "assets",
-        "app.php",
-        ".htaccess",
         "favicon.ico"
       ],
       "index": "index.html",
@@ -22,7 +19,6 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "max",
       "styles": [
-        "../node_modules/font-awesome/css/font-awesome.min.css",
         "styles.scss"
       ],
       "scripts": [],

@@ -7,13 +7,14 @@ export class WebSocketService {
 
   private subject: Rx.Subject<MessageEvent>;
 
-  constructor() { }
 
+  get _get_subject() {
+    return this.subject;
+  }
 
   public connect(url): Rx.Subject<MessageEvent> {
     if (!this.subject) {
       this.subject = this.create(url);
-      console.log('Successfully connected: ' + url);
     }
     return this.subject;
   }

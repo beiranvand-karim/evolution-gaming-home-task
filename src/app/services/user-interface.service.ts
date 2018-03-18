@@ -14,16 +14,12 @@ export class UserInterfaceService {
   public updateSlide$ = this.updateSlideSubject.asObservable();
 
 
-
-  constructor() { }
-
   toggleSlideUpdate() {
     this.updateSlideSubject.next(!this.updateSlideSubject.getValue());
   }
 
 
   slideUpdateIn() {
-    this.updateSlideSubject.next(true);
     this.updateSlideSubject.next(true);
   }
 

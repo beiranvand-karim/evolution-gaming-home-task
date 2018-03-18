@@ -11,6 +11,7 @@ import {HttpModule} from '@angular/http';
 import {Table} from '../classes/table';
 import {By} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ChatServiceStub} from '../add/add.component.spec';
 
 describe('TableItemComponent', () => {
   let component: TableItemComponent;
@@ -29,7 +30,9 @@ describe('TableItemComponent', () => {
         UpdateComponent
       ],
       providers: [
-        ChatService,
+        {
+          provide: ChatService, useClass: ChatServiceStub
+        },
         WebSocketService,
         UserInterfaceService
       ]
@@ -85,4 +88,33 @@ describe('TableItemComponent', () => {
 
 
   });
+
+
+
+
+  it('should test delete()', () => {
+    const service = TestBed.get(ChatService);
+    const spy = spyOn(service, 'addToRemovalCandidates');
+    const spy1 = spyOn(service, 'removeFromTableList');
+
+    component.delete(5);
+    expect(spy).toHaveBeenCalledWith(5);
+    expect(spy1).toHaveBeenCalledWith(5);
+    expect(service.messages.getValue().id).toBe(5);
+
+  });
+
+
+
+  it('should test slide()', () => {
+
+    component.visible = false;
+
+    expect(component.slide()).toBe('out');
+    component.visible = true;
+
+    expect(component.slide()).toBe('in');
+
+  });
+
 });

@@ -34,7 +34,7 @@ export class ChatService {
       .connect(URL)
       .map((response: MessageEvent): any => {
 
-        console.log(JSON.parse(response.data));
+        // console.log(JSON.parse(response.data));
 
         const data = JSON.parse(response.data);
 
@@ -84,6 +84,24 @@ export class ChatService {
       });
 
   }
+
+
+  get _get_tables() {
+    return this.tables.getValue();
+  }
+
+  set _set_tables(value: Table[]) {
+    this.tables.next(value);
+  }
+
+  get _get_removalCandidates() {
+    return this.removalCandidatesSubject.getValue();
+  }
+
+  set _set_removalCandidates(value: DeleteCandidateTable[]) {
+    this.removalCandidatesSubject.next(value);
+  }
+
 
   tableList(tables: Table[]) {
 
@@ -145,7 +163,6 @@ export class ChatService {
 
     const table = this.removalCandidatesSubject.getValue().find(tables => tables.id === id);
     this.tables.getValue()[table.position] = table.table;
-
 
   }
 }

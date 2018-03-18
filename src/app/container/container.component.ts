@@ -50,7 +50,7 @@ export class ContainerComponent implements OnInit {
     };
 
     this.chatService.messages.next(login);
-    this.router.navigate(['/']).then(null);
+    this.router.navigate(['/']);
 
   }
 

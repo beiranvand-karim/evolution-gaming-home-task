@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TablesListComponent } from './tables-list.component';
+import {TableItemComponent} from '../table-item/table-item.component';
+import {UpdateComponent} from '../update/update.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 describe('TablesListComponent', () => {
   let component: TablesListComponent;
@@ -8,7 +11,14 @@ describe('TablesListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TablesListComponent ]
+      imports: [
+        ReactiveFormsModule
+      ],
+      declarations: [
+        TablesListComponent,
+        TableItemComponent,
+        UpdateComponent
+      ]
     })
     .compileComponents();
   }));
@@ -19,7 +29,7 @@ describe('TablesListComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ChatService} from '../services/chat.service';
 import {UserInterfaceService} from '../services/user-interface.service';
@@ -8,7 +8,7 @@ import {UserInterfaceService} from '../services/user-interface.service';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })
-export class AddComponent implements OnInit {
+export class AddComponent {
 
 
 
@@ -17,8 +17,6 @@ export class AddComponent implements OnInit {
   after_id = new FormControl('', [Validators.required, Validators.minLength(1)]);
   name = new FormControl('', [Validators.required, Validators.minLength(3)]);
   participants = new FormControl('', [Validators.required, Validators.minLength(1)]);
-
-
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,10 +29,6 @@ export class AddComponent implements OnInit {
       participants: this.participants
     });
   }
-
-  ngOnInit() {
-  }
-
 
   close() {
     this.userInterfaceService.slideOut();

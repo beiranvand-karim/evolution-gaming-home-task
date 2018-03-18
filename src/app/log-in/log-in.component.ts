@@ -33,16 +33,7 @@ export class LogInComponent implements OnInit {
   }
 
 
-  subscribe() {
-
-
-    let order;
-    //
-    // const login = {
-    //   '$type': 'login',
-    //   'username': 'user1234',
-    //   'password': 'password1234'
-    // };
+  login() {
 
     const login = {
       '$type': 'login',
@@ -51,9 +42,14 @@ export class LogInComponent implements OnInit {
     };
 
     this.chatService.messages.next(login);
+  }
 
 
-    order = {
+  subscribe() {
+
+    this.login();
+
+    const order = {
       '$type': 'subscribe_tables'
     };
 

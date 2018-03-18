@@ -9,7 +9,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {Table} from '../classes/table';
-import {UserInterfaceServiceStub} from '../add/add.component.spec';
+import {ChatServiceStub, UserInterfaceServiceStub} from '../add/add.component.spec';
 
 describe('UpdateComponent', () => {
   let component: UpdateComponent;
@@ -23,7 +23,9 @@ describe('UpdateComponent', () => {
         HttpModule
       ],
       providers: [
-        ChatService,
+        {
+          provide: ChatService, useClass: ChatServiceStub
+        },
         WebSocketService,
         {
           provide: UserInterfaceService, useClass: UserInterfaceServiceStub
@@ -104,6 +106,28 @@ describe('UpdateComponent', () => {
       expect(data).toBeFalsy();
 
     });
+
+  });
+
+  it('should test editTable()', () => {
+
+    const t = new Table();
+
+    t.id = 1;
+    t.name = 'test';
+    t.participants = 5;
+
+    component.table = t;
+
+    const service = TestBed.get(ChatService);
+
+    component.edit_Form.controls.edit_name.setValue('test');
+    component.edit_Form.controls.edit_participants.setValue(5);
+
+    component.editTable();
+
+    expect(service.messages.getValue().table.name).toBe('test');
+    expect(service.messages.getValue().table.participants).toBe(5);
 
   });
 });
